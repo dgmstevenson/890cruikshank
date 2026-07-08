@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a4258"/>
+      <stop offset="1" stop-color="#2a2635"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <circle cx="930" cy="180" r="70" fill="#ffffff" opacity="0.18"/>
+  <circle cx="930" cy="180" r="46" fill="#ffffff" opacity="0.28"/>
+  <path d="M0 470 L180 330 L360 450 L520 300 L700 460 L860 340 L1050 480 L1200 400 L1200 800 L0 800 Z" fill="#564b66"/>
+  <path d="M0 560 L220 430 L430 560 L640 420 L880 570 L1080 460 L1200 540 L1200 800 L0 800 Z" fill="#3a3348"/>
+  <path d="M0 660 L260 560 L520 670 L780 560 L1040 680 L1200 600 L1200 800 L0 800 Z" fill="#2a2635"/>
+  <g fill="#12351f" opacity="0.85">
+    <path d="M120 800 L150 640 L180 800 Z"/>
+    <path d="M180 800 L210 665 L240 800 Z"/>
+    <path d="M980 800 L1010 650 L1040 800 Z"/>
+    <path d="M1040 800 L1070 675 L1100 800 Z"/>
+  </g>
+  <g transform="translate(600,700)" text-anchor="middle" fill="#ffffff" opacity="0.9">
+    <rect x="-190" y="-34" width="380" height="58" rx="29" fill="#142519" opacity="0.55"/>
+    <text x="-150" y="5" font-family="Georgia, serif" font-size="26">📷</text>
+    <text x="16" y="4" font-family="'Segoe UI', Arial, sans-serif" font-size="21" font-weight="600" letter-spacing="0.5">Primary Bedroom</text>
+  </g>
+  <text x="600" y="748" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#ffffff" opacity="0.6">Primary bedroom</text>
+</svg>
