@@ -2,6 +2,11 @@
 (function () {
   "use strict";
 
+  function track(eventName, properties) {
+    if (!window.posthog || typeof window.posthog.capture !== "function") return;
+    window.posthog.capture(eventName, properties || {});
+  }
+
   /* ---- Sticky nav shading ---- */
   var nav = document.getElementById("nav");
   function onScroll() {
@@ -15,11 +20,28 @@
   var toggle = document.getElementById("navToggle");
   var links = document.getElementById("navLinks");
   if (toggle) {
-    toggle.addEventListener("click", function () { links.classList.toggle("open"); });
+    toggle.addEventListener("click", function () {
+      links.classList.toggle("open");
+      track("mobile_menu_toggled", { open: links.classList.contains("open") });
+    });
     links.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () { links.classList.remove("open"); });
     });
   }
+
+  document.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      var href = link.getAttribute("href") || "";
+      var text = (link.textContent || "").trim();
+      if (href.indexOf("tel:") === 0) {
+        track("phone_link_clicked", { label: text, href: href });
+      } else if (href.indexOf(".pdf") !== -1) {
+        track("feature_sheet_clicked", { label: text, href: href });
+      } else if (href.charAt(0) === "#") {
+        track("section_link_clicked", { label: text, href: href });
+      }
+    });
+  });
 
   /* ---- Reveal on scroll ---- */
   var reveals = document.querySelectorAll(".reveal");
@@ -46,6 +68,10 @@
     lbImg.alt = items[i].alt;
     lb.classList.add("open");
     document.body.style.overflow = "hidden";
+    track("gallery_photo_opened", {
+      index: i + 1,
+      image: items[i].getAttribute("data-full") || items[i].getAttribute("src")
+    });
   }
   function close() {
     lb.classList.remove("open");
@@ -55,6 +81,11 @@
     current = (current + d + items.length) % items.length;
     lbImg.src = items[current].getAttribute("data-full") || items[current].src;
     lbImg.alt = items[current].alt;
+    track("gallery_photo_navigated", {
+      direction: d > 0 ? "next" : "previous",
+      index: current + 1,
+      image: items[current].getAttribute("data-full") || items[current].getAttribute("src")
+    });
   }
 
   items.forEach(function (img, i) {
