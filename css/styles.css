@@ -39,7 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3 {
   font-family: var(--serif);
@@ -257,7 +257,14 @@ a:hover { color: var(--wood); }
   color: var(--forest-deep);
 }
 .story__media { position: relative; }
-.story__media img { border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.story__media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
 .story__tag {
   position: absolute;
   bottom: -22px; left: -22px;
