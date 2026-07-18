@@ -42,7 +42,7 @@
 
   function open(i) {
     current = i;
-    lbImg.src = items[i].src;
+    lbImg.src = items[i].getAttribute("data-full") || items[i].src;
     lbImg.alt = items[i].alt;
     lb.classList.add("open");
     document.body.style.overflow = "hidden";
@@ -53,7 +53,7 @@
   }
   function step(d) {
     current = (current + d + items.length) % items.length;
-    lbImg.src = items[current].src;
+    lbImg.src = items[current].getAttribute("data-full") || items[current].src;
     lbImg.alt = items[current].alt;
   }
 
